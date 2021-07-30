@@ -5,11 +5,21 @@
     <checkboxx v-bind:ccc="lovingVue" v-on:check-event="calboo"></checkboxx>
     <p v-if="lovingVue">会不会显示</p>
 
-    <slotpro >
+    <slotpro ref="slot-component">
       <template #slotname="slotProps">
         {{ slotProps.teacher.name }}
       </template>
     </slotpro>
+
+    <button v-on:click="getChildrenMethod">点击调用子组件的方法</button>
+
+    <inlinetemp inline-template>
+      <div>
+        <p>These are compiled as the component's own template.inline pros is {{messageInTemplete}}</p>
+        <!--无法使用父类的数据 -->
+<!--        <p>Tssss. app prop is {{this.hello}}</p>-->
+      </div>
+    </inlinetemp>
 
     <ul>
       <li v-for="(item,index) in items" v-bind:key="item.mess">
@@ -49,15 +59,16 @@
 import wuyule from './components/Helllloo.vue'
 import checkboxx from './components/BaseCheckBox'
 import slotpro from './components/SlotPro'
+import inlinetemp from './components/InlineTempletePro'
 
 export default {
   name: 'App',
   props: {
     lovingVue: Boolean
   },
-  watch:{
-    lovingVue : function (val) {
-      console.log("has change " +val)
+  watch: {
+    lovingVue: function (val) {
+      console.log("has change " + val)
     }
   },
   data: function () {
@@ -99,7 +110,8 @@ export default {
   components: {
     wuyule,
     checkboxx,
-    slotpro
+    slotpro,
+    inlinetemp
   },
   computed: {
     reversedMessage: function () {
@@ -124,6 +136,18 @@ export default {
     calboo: function (val) {
       this.lovingVue = val
       console.log(val)
+    },
+    getChildrenMethod: function () {
+      this.$refs["slot-component"].childrenMethodInSLot()
+    },
+    providerMeth() {
+      alert("向子组件提供的方法")
+    }
+  },
+  provide: {
+    providerMessage: "provider by parent",
+    providerMethod: function () {
+      alert("providerMethod from parent")
     }
   }
 }
