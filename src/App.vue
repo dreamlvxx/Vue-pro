@@ -21,6 +21,9 @@
       </div>
     </inlinetemp>
 
+    <router-link to="/second">Go to Foo</router-link>
+    <router-view></router-view>
+
     <ul>
       <li v-for="(item,index) in items" v-bind:key="item.mess">
         {{ item.mess }}--{{ index }}

@@ -17,6 +17,9 @@
 
 <script>
 export default {
+  mixins:{
+
+  },
   inject:["providerMessage","providerMethod"],
   name: "SlotPro",
   props: {
