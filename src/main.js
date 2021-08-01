@@ -3,16 +3,59 @@ import App from './App.vue'
 import VueRouter from 'vue-router'
 
 import second from "@/components/SecondPage";
+import default404 from "@/components/Default404Page"
+import threepage from '@/components/ThreePage'
+import threedefault from '@/components/ThreeDefaultPage'
+import forpage from '@/components/FourPage'
+import propspage from '@/components/PropsPage'
 
 Vue.config.productionTip = false
 Vue.use(VueRouter)
 
 const routes = [
-  { path: '/second', component: second },
+  { path: '/second/:rouname',
+    components: {
+        default: second,
+        routeview1: threepage,
+        routeview2: forpage
+    },
+    name: 'second',
+    //可以设置别名
+    alias: '/second-alias',
+    //匹配到之后，继续进行深层次的匹配，进而渲染在second的router-view里面
+    children: [
+      {
+        path:'threep',
+        component: threepage,
+        name: 'threep'
+      },
+      {
+        //设置children没有匹配的default页面
+        path: '',
+        component: threedefault,
+      }
+    ],
+  },
+    //重定向路由
+  {
+    path: '/redirectPath',
+    redirect: {name: 'second'}
+  },
+  {
+    path: '/proppage/:propsnvalue',
+    component: propspage,
+    props: true
+  },
+  // 会匹配以 `/user-` 开头的任意路径
+  // 当使用一个通配符时，$route.params 内会自动添加一个名为 pathMatch 参数。它包含了 URL 通过通配符被匹配的部分：
+  {path: '/user-*'},
+  // 会匹配所有路径
+  {path: '*',
+    component: default404,
+    name: 'allpage'
+  }
 ]
 
-// 3. 创建 router 实例，然后传 `routes` 配置
-// 你还可以传别的配置参数, 不过先这么简单着吧。
 const router = new VueRouter({
   routes // (缩写) 相当于 routes: routes
 })

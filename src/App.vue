@@ -1,6 +1,10 @@
 <template>
   <div id="app">
-    <p v-bind:style="styObj">这是显示地铁</p>
+    <p v-bind:style="styObj">这是第一个页面routeview开始</p>
+    <router-view></router-view>
+    <router-view name="routeview1"></router-view>
+    <router-view name="routeview2"></router-view>
+    <p v-bind:style="styObj">这是第一个页面routeview结束</p>
     <p v-bind:style="{ fontSize: postFontSize + 'px' }">style属性样式</p>
     <checkboxx v-bind:ccc="lovingVue" v-on:check-event="calboo"></checkboxx>
     <p v-if="lovingVue">会不会显示</p>
@@ -21,8 +25,12 @@
       </div>
     </inlinetemp>
 
-    <router-link to="/second">Go to Foo</router-link>
-    <router-view></router-view>
+    <router-link :to="{name: 'threep',params: {rouname: '11111'}}">Go to second</router-link>
+    <router-link :to="{name: 'second',params: {rouname: '22222'}}">go tyo second again</router-link>
+    <button v-on:click="gotoSecdonMsd">编程式跳转第二个component</button>
+    <button v-on:click="gobackPage">编程式后退一步</button>
+    <button v-on:click="goforwardPage">编程式前进一步</button>
+    <button v-on:click="gotoPropsPage">用props设置传参</button>
 
     <ul>
       <li v-for="(item,index) in items" v-bind:key="item.mess">
@@ -72,6 +80,9 @@ export default {
   watch: {
     lovingVue: function (val) {
       console.log("has change " + val)
+    },
+    $route(to,from){
+      console.log("to = " + to + "   from = " + from)
     }
   },
   data: function () {
@@ -127,6 +138,9 @@ export default {
       set: function (newvalue) {
         this.lovingVue = newvalue
       }
+    },
+    rotername :function () {
+      return this.route.params.username
     }
   },
   methods: {
@@ -145,6 +159,18 @@ export default {
     },
     providerMeth() {
       alert("向子组件提供的方法")
+    },
+    gotoSecdonMsd: function () {
+      this.$router.push({name: 'threep',params: {rouname: '777'}})
+    },
+    goforwardPage: function () {
+      this.$router.go(1)
+    },
+    gobackPage: function () {
+      this.$router.go(-1)
+    },
+    gotoPropsPage: function () {
+      this.$router.push('/proppage/ooooooo')
     }
   },
   provide: {
