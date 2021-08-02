@@ -6,6 +6,9 @@
     </transition>
     <router-view name="routeview1"></router-view>
     <router-view name="routeview2"></router-view>
+    <router-view></router-view>
+<!--    <router-view name="routeview1"></router-view>-->
+<!--    <router-view name="routeview2"></router-view>-->
     <p v-bind:style="styObj">这是第一个页面routeview结束</p>
     <p v-bind:style="{ fontSize: postFontSize + 'px' }">style属性样式</p>
     <checkboxx v-bind:ccc="lovingVue" v-on:check-event="calboo"></checkboxx>
@@ -38,6 +41,10 @@
     <!--      <button v-on:click="">导航守卫的例子</button>-->
     <!--    </div>-->
 
+    <div>
+      <button v-on:click="gotoStatePage">进入statepage</button>
+    </div>
+
     <ul>
       <li v-for="(item,index) in items" v-bind:key="item.mess">
         {{ item.mess }}--{{ index }}
@@ -68,7 +75,6 @@
     <!--            url="https://www.baidu.com" />-->
 
     <wuyule v-bind:post="singlepost" v-on:enlarge-text="largeSize" message="ssssss"></wuyule>
-
   </div>
 </template>
 
@@ -177,6 +183,9 @@ export default {
     },
     gotoPropsPage: function () {
       this.$router.push('/proppage/ooooooo')
+    },
+    gotoStatePage: function () {
+      this.$router.push('/storepage')
     }
   },
   provide: {
