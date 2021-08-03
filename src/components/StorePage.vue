@@ -5,10 +5,10 @@
     <div>
       <p v-for="(item,index) in otherMaxMeth" v-bind:key="item">{{ item }} --- {{ index }}</p>
     </div>
-    <button v-on:click="increment">增加</button>
-    <button v-on:click="decrement">减少</button>
-    <button v-on:click="increMax">增加max</button>
-    <button v-on:click="decreMax">减少max</button>
+    <button v-on:click="add">增加</button>
+    <button v-on:click="minus">减少</button>
+    <button v-on:click="addMax">增加max</button>
+    <button v-on:click="minusMax">减少max</button>
   </div>
 </template>
 
@@ -27,28 +27,19 @@ export default {
     ),
     ...mapGetters(
         {
-            otherMaxMeth : 'otherMax'
+          otherMaxMeth: 'otherMax'
         }
     ),
-    ...mapMutations(
-        {
-          addMax : 'incrementMax'
-        }
-    )
   },
   methods: {
-    increment() {
-      this.addMax
-    },
-    decrement() {
-      this.$store.commit('decrement')
-    },
-    increMax() {
-      this.addMax()
-    },
-    decreMax() {
-      this.$store.commit('decrementMax')
-    }
+    ...mapMutations(
+        {
+          add: 'increment',
+          minus: 'decrement',
+          addMax: 'incrementMax',
+          minusMax: 'decrementMax'
+        }
+    ),
   }
 }
 </script>

@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
 import Vuex from 'vuex'
+import Home from './components/HomePage'
 
 import second from "@/components/SecondPage";
 import default404 from "@/components/Default404Page"
@@ -11,12 +12,30 @@ import forpage from '@/components/FourPage'
 import propspage from '@/components/PropsPage'
 import statePage from '@/components/StorePage'
 import loginPage from '@/components/LoginPage'
+import Welcome from '@/components/Welcomepage'
+import Shop from '@/components/ShopPage'
 
 Vue.config.productionTip = false
 Vue.use(VueRouter)
 Vue.use(Vuex)
 
 const routes = [
+    {
+        path: '/',
+        component: Welcome
+    },
+    {
+        path: '/home',
+        component: Home
+    },
+    {
+        path: '/welcome',
+        component: Welcome
+    },
+    {
+        path: '/shop',
+        component: Shop
+    },
     {
         path: '/second/:rouname',
         components: {
@@ -76,10 +95,6 @@ const routes = [
             }
         ],
     },
-    {
-        path: '/',
-        component: App
-    },
     //重定向路由
     {
         path: '/redirectPath',
@@ -93,19 +108,6 @@ const routes = [
     {
         path: '/storepage',
         component: statePage
-    },
-    // 会匹配以 `/user-` 开头的任意路径
-    // 当使用一个通配符时，$route.params 内会自动添加一个名为 pathMatch 参数。它包含了 URL 通过通配符被匹配的部分：
-    {path: '/user-*'},
-    // 会匹配所有路径
-    {
-        path: '*',
-        component: default404,
-        name: 'allpage'
-    },
-    {
-        path: '/redirectPath',
-        redirect: {name: 'second'}
     },
     {
         path: '/proppage/:propsnvalue',
@@ -139,6 +141,12 @@ const store = new Vuex.Store({
         otherMax: state => {
             return state.arrlist.filter(num => num > 5)
         }
+    },
+    //可以包含异步操作
+    actions: {
+        increment(context){
+            context.commit('increment')
+        },
     }
 })
 
