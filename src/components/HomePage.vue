@@ -189,7 +189,8 @@ export default {
   provide: {
     providerMessage: "provider by parent",
     providerMethod: function () {
-      alert("providerMethod from parent")
+      // alert("providerMethod from parent")
+      this.providerMeth()
     }
   }
 }

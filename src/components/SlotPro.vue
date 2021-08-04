@@ -7,7 +7,7 @@
 </span>
 
     <button v-on:click="getparentMethod">点击获取parent的fontsize</button>
-    <button v-on:click="callProviderMethod">点击响应parent提供的方法</button>
+    <button v-on:click="callProviderMethod()">点击响应parent提供的方法</button>
 
     <p>{{providerMessage }}</p>
 
