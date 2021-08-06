@@ -2,6 +2,7 @@
   <div id="home">
     <p v-bind:style="styObj">开始vue之旅</p>
     <router-link :to="{path:'/shop'}" target = "_blank">去购物页面</router-link>
+    <router-link :to="{path: '/axiospage'}">去网络请求页面</router-link>
     <transition name="slide">
       <router-view></router-view>
     </transition>
@@ -135,7 +136,7 @@ export default {
     wuyule,
     checkboxx,
     slotpro,
-    inlinetemp
+    inlinetemp,
   },
   computed: {
     reversedMessage: function () {
