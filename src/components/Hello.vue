@@ -3,15 +3,6 @@
     <p v-if=tttt>if显示出来了{{ post.message }}</p>
     <p v-else>else显示出来了{{ post.message }}</p>
     <button v-on:click="$emit('enlarge-text')">点击变大字体</button>
-    <p>
-      Ask a yes/no question:
-      <input v-model="question">
-    </p>
-    <p v-bind:title="post.message">
-      For a guide and recipes on how to configure customize {{ reverseSelfMessage }} this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
   </div>
 </template>
 

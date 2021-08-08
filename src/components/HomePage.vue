@@ -1,15 +1,27 @@
 <template>
   <div id="home">
-    <p v-bind:style="styObj">开始vue之旅</p>
-    <router-link :to="{path:'/shop'}" target = "_blank">去购物页面</router-link>
-    <router-link :to="{path: '/axiospage'}">去网络请求页面</router-link>
+    <p v-bind:style="styObj"  id="start">开始vue之旅</p>
+    <router-link :to="{path:'/shop'}" style="align-self: flex-start">去购物页面</router-link>
+    <router-link :to="{path: '/axiospage'} " style="align-self: flex-start">去网络请求页面</router-link>
+    <div style="align-self: flex-start">
+      <button v-on:click="gotoStatePage">基础vue教程</button>
+    </div>
+    <div style="align-self: flex-start">
+      <button v-on:click="goto_vue_router">Vuex教程</button>
+    </div>
+    <div style="align-self: flex-start">
+      <button @click="goto_vue_router">vue-router教程</button>
+    </div>
+    <div style="align-self: flex-start">
+      <button>slot教程</button>
+    </div>
     <transition name="slide">
       <router-view></router-view>
     </transition>
     <router-view name="routeview1"></router-view>
     <router-view name="routeview2"></router-view>
-    <p v-bind:style="styObj">这是第一个页面routeview结束</p>
     <p v-bind:style="{ fontSize: postFontSize + 'px' }">style属性样式</p>
+
     <checkboxx v-bind:ccc="lovingVue" v-on:check-event="calboo"></checkboxx>
     <p v-if="lovingVue">会不会显示</p>
 
@@ -36,14 +48,6 @@
     <button v-on:click="goforwardPage">编程式前进一步</button>
     <button v-on:click="gotoPropsPage">用props设置传参</button>
 
-    <!--    <div>-->
-    <!--      <button v-on:click="">导航守卫的例子</button>-->
-    <!--    </div>-->
-
-    <div>
-      <button v-on:click="gotoStatePage">进入statepage</button>
-    </div>
-
     <ul>
       <li v-for="(item,index) in items" v-bind:key="item.mess">
         {{ item.mess }}--{{ index }}
@@ -69,7 +73,7 @@
       <p> area mess is {{ hello }}</p>
     </div>
 
-    <img alt="Vue logo" src="../assets/logo.png">
+    <img alt="Vue logo" src="../assets/images/logo.png">
     <!--    <wuyule msg="Welcome pppppssto Your Vue.js App" v-bind:message="reversedMessage" v-bind:tttt="false"-->
     <!--            url="https://www.baidu.com" />-->
 
@@ -110,7 +114,7 @@ export default {
       hello: 'hello world',
       styObj: {
         color: 'blue',
-        fontSize: this.postFontSize + 'px'
+        fontSize: this.postFontSize + 'px',
       },
       classObj: {
         classPar: "asd"
@@ -155,6 +159,9 @@ export default {
     }
   },
   methods: {
+    goto_vue_router(){
+      this.$router.push('/routerstart')
+    },
     changeMessage: function () {
       alert("hahahahaha")
     },
@@ -199,11 +206,20 @@ export default {
 
 <style>
 #home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  background-color: aqua;
+}
+
+#start{
+  font-size: 66px;
+  transform: rotate(-12deg);
 }
 </style>

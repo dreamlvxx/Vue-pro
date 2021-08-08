@@ -2,17 +2,19 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import Home from '../components/HomePage'
-import second from "../components/SecondPage";
-import default404 from "@/components/Default404Page"
-import threepage from '@/components/ThreePage'
-import threedefault from '@/components/ThreeDefaultPage'
-import forpage from '@/components/FourPage'
-import propspage from '@/components/PropsPage'
+import vue_router from '@/components/vue-router/RouterStartPage'
+import firstpage from '@/components/vue-router/FirstRouterPage'
+import second from "../components/vue-router/SecondRouterPage";
+import default404 from "@/components/vue-router/Default404Page"
+import threepage from '@/components/vue-router/ThreePage'
+import threedefault from '@/components/vue-router/ThreeDefaultPage'
+import forpage from '@/components/vue-router/FourPage'
+import propspage from '@/components/vue-router/PropsPage'
 import statePage from '@/components/StorePage'
-import loginPage from '@/components/LoginPage'
+import loginPage from '@/components/vue-router/LoginPage'
 import Welcome from '@/components/Welcomepage'
-import Shop from '@/components/ShopPage'
-import AxiosPage from "@/components/AxiosPage"
+import Shop from '@/components/practice/ShopPage'
+import AxiosPage from "@/network/AxiosPage"
 
 Vue.use(VueRouter)
 
@@ -27,7 +29,7 @@ const routes = [
     },
     {
         path: '/home',
-        component: Home
+        component: Home,
     },
     {
         path: '/welcome',
@@ -38,9 +40,24 @@ const routes = [
         component: Shop
     },
     {
+        path: '/routerstart',
+        component: vue_router
+    },
+    //嵌套路由
+    {
+        path: '/first',
+        component: firstpage,
+        children: [
+            {
+                path: 'second',
+                component: second
+            }
+        ]
+    },
+    {
         path: '/second/:rouname',
         components: {
-            default: second,
+            default: firstpage,
             routeview1: threepage,
             routeview2: forpage
         },
@@ -109,11 +126,6 @@ const routes = [
     {
         path: '/storepage',
         component: statePage
-    },
-    {
-        path: '/proppage/:propsnvalue',
-        component: propspage,
-        props: true,
     },
     // 会匹配以 `/user-` 开头的任意路径
     // 当使用一个通配符时，$route.params 内会自动添加一个名为 pathMatch 参数。它包含了 URL 通过通配符被匹配的部分：

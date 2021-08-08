@@ -1,11 +1,8 @@
 <template>
   <div>
-    <p v-bind:style="styOnbj">第二个页面的开始</p>
-    <router-view></router-view>
-    <p>第二个页面结束</p>
+    <p v-bind:style="styOnbj">SecondRouterPage内容</p>
   </div>
 </template>
-
 <script>
 
 export default {
@@ -21,13 +18,13 @@ export default {
     console.log(this.routername)
   },
   computed: {
-    routername : function () {
+    routername: function () {
       return this.$route.params.rouname
     },
 
   },
   watch: {
-    $route(to,from){
+    $route(to, from) {
       console.log("in second===    to = " + to + "   from = " + from)
     }
   }
