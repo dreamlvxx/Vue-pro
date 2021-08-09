@@ -18,6 +18,7 @@ export default {
     //beforeRouteEnter 是支持给 next 传递回调的唯一守卫
     next(vm => {
       // 通过 `vm` 访问组件实例
+      console.log(vm)
     })
   },
   /**
@@ -30,7 +31,8 @@ export default {
    * @param next
    */
   beforeRouteUpdate(to,from,next){
-
+    console.log(`beforeRouteUpdate : to = ${to}  from = ${from}  next = ${next.toString()}`)
+    next()
   },
   /**
    * // 导航离开该组件的对应路由时调用
@@ -40,7 +42,8 @@ export default {
    * @param next
    */
   beforeRouteLeave(to,from,next){
-
+    console.log(`beforeRouteLeave to = ${to}  from = ${from}  next = ${next.toString()}`)
+    next()
   }
 }
 </script>

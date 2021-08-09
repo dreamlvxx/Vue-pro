@@ -1,10 +1,15 @@
 <template>
-  <p>这是第4个视图</p>
+  <div>
+    <p>
+        这是别名page
+    </p>
+  </div>
+
 </template>
 
 <script>
 export default {
-  name: "FourPage"
+  name: "AliasNamePage"
 }
 </script>
 
