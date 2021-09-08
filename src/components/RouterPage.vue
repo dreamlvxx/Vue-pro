@@ -1,10 +1,11 @@
 <template>
-  <p>学习vue-router</p>
+  <div>
+    <p>学习vue-router</p>
 
-  <router-view></router-view>
-  <!-- 具名router—view-->
-  <router-view name="view1"></router-view>
-
+    <router-view></router-view>
+    <!-- 具名router—view-->
+    <router-view name="view1"></router-view>
+  </div>
 </template>
 
 <script>
@@ -13,9 +14,7 @@ export default {
   data() {
 
   },
-  methods: {
-
-  },
+  methods: {},
 
 }
 </script>

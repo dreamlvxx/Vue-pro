@@ -9,7 +9,7 @@
     <button v-on:click="getparentMethod">点击获取parent的fontsize</button>
     <button v-on:click="callProviderMethod()">点击响应parent提供的方法</button>
 
-    <p>{{providerMessage }}</p>
+    <p>{{ providerMessage }}</p>
 
   </div>
 
@@ -17,10 +17,8 @@
 
 <script>
 export default {
-  mixins:{
-
-  },
-  inject:["providerMessage","providerMethod"],
+  mixins: {},
+  inject: ["providerMessage", "providerMethod"],
   name: "SlotPro",
   props: {
     url: String,
@@ -44,10 +42,10 @@ export default {
       console.log("parent fontsize is " + a)
       alert("parent fontsize is " + a)
     },
-    childrenMethodInSLot(){
+    childrenMethodInSLot() {
       alert("excu childrenMethodInSLot")
     },
-    callProviderMethod(){
+    callProviderMethod() {
       this.providerMethod()
     }
   }

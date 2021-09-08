@@ -188,7 +188,7 @@ export default {
       this.$router.go(-1)
     },
     gotoPropsPage: function () {
-      this.$router.push('/proppage/ooooooo')
+      this.$router.push({path:'/proppage',params:{propsnvalue:'pro++++++++++++'}})
     },
     gotoStatePage: function () {
       this.$router.push('/storepage')

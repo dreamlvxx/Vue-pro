@@ -20,6 +20,9 @@ export default {
 </script>
 
 <style scoped>
+div button {
+  background-color: black;
+}
 div#firdiv {
   display: flex;
   flex-direction: column;

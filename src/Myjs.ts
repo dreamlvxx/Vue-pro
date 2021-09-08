@@ -1,14 +1,15 @@
-function getMess(num){
+function getMess(num) {
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve(2 * num)
         }, 2000);
-    } )
+    })
 }
 
-async function excuxion(){
+async function excuxion() {
     let result = await getMess(5);
     console.log(result);
+
     return "done"
 }
 
@@ -18,5 +19,7 @@ excuxion().then(function (res) {
 })
 console.log("end")
 
-let a: string = ""
-console.log(a)
+let sad: number = 123
+console.log(sad)
+
+
